@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
+from django.shortcuts import render
 
 from .models import CategoryL1, CategoryL2
 
@@ -19,9 +20,21 @@ def index(request):
     return HttpResponse(variable_a)
 
 
-def catalog(request, catalogl1_id, catalogl2_id=None):
-    if catalogl2_id:
-        cat = CategoryL2.objects.get(pk=catalogl2_id)
-    else:
-        cat = CategoryL1.objects.get(pk=catalogl1_id)
-    return HttpResponse(f"{catalogl1_id} - {catalogl2_id}<br>{cat.name}")
+def category_l1_view(request, categoryl1_id):
+    current_category = CategoryL1.objects.get(pk=categoryl1_id)
+    child_categories = CategoryL2.objects.filter(parent=categoryl1_id)
+    context = {
+        "current_category": current_category,
+        "child_categories": child_categories
+    }
+    return render(request, 'shop/category_l1.html', context)
+
+
+def category_l2_view(request, categoryl1_id, categoryl2_id):
+    current_category = CategoryL1.objects.get(pk=categoryl1_id)
+    products = Product.objects.filter(parent=categoryl2_id)
+    context = {
+        "current_category": current_category,
+        "child_categories": child_categories
+    }
+    return render(request, 'shop/category_l1.html', context)

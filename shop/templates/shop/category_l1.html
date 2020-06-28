@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Posters - {{ current_category.name }}</title>
+  </head>
+  <body>
+    <h1>{{ current_category.name }}</h1>
+    <p>{{ current_category.description }}</p>
+    <ul>
+        {% for child_category in child_categories %}
+        <li>{{ child_category.name }}</li>
+        {% endfor %}
+    </ul>
+  </body>
+</html>
