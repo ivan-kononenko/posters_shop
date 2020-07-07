@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="/static/styles/main.css">
+</head>
+<body>
+    <form>
+        <!--Input fields for all needed info about feedback-->
+        <label for="name">Your name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Your email:</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="feedback_txt">Your feedback:</label><br>
+        <input type="text" id="feedback_txt" name="feedback_txt"><br>
+        <!--Radio buttons for determination of feedback type-->
+        <input type="radio" id="bug_report" name="Feedback" value="bug_report">
+        <label for="bug_report">Bug report</label><br>
+        <input type="radio" id="general_feedback" name="Feedback" value="general_feedback">
+        <label for="general_feedback">General feedback</label><br><br>
+        <!--Submit button or smth-->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
