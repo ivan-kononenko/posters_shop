@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from .models import CategoryL1, CategoryL2, Product
+#from .forms import NameForm
 
 
 def index(request):
@@ -34,5 +36,12 @@ def product_view(request, categoryl1_id, categoryl2_id, product_id):
     }
     return render(request, 'shop/product.html', context)
 
+
 def feedback_view(request):
+    #if request.method == 'POST':
+        #form = NameForm(request.POST)
+        #if form.is_valid:
+            #return HttpResponseRedirect("/feedback/thanks/")
+    #else:
+        #form = NameForm()
     return render(request, 'shop/feedback.html')
