@@ -1,21 +1,15 @@
-<html>
-  <head>
-      <meta charset="utf-8">
-      <title>Posters</title>
-      <link rel="stylesheet" href="/static/styles/main.css">
-  </head>
-  <body>
-    <h1>Welcome to posters shop</h1>
-    <ul class="mainmenu">
-        <li><a href="/shop/">Main</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/shop/feedback/">Feedback</a></li>
-        <li><a href="/contactus/">Contact Us</a></li>
-    </ul>
+{% extends "base.html" %}
+
+{% block title %}
+Welcome to the posters shop my friend!
+{% endblock %}
+
+{% block content %}
+<form action="/contactus/" method="post">
     <ul>
         {% for category in category_list %}
         <li><a href="/shop/{{ category.pk }}/">{{ category.name }}</a></li>
         {% endfor %}
     </ul>
-  </body>
-</html>
+</form>
+{%endblock%}

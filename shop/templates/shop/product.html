@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="utf-8">
-      <title>Posters - {{ current_product.name }}</title>
-      <link rel="stylesheet" href="/static/styles/main.css">
-  </head>
-  <body style="background-color:#FFB532;">
-    <h1 style="background-color:#8FC512; color:97FBFF; text-align:center; font-size: 44"> {{ current_product.name }}</h1>
+{% extends "base.html" %}
+
+{% block title %}
+Posters - {{ current_product.name }}
+{% endblock %}
+
+{% block content %}
+<h1 style="background-color:#8FC512; color:97FBFF; text-align:center; font-size: 44"> {{ current_product.name }}</h1>
     <p style="font-family:verdana; font-size:20">{{ current_product.description }}</p>
-    <ul class="mainmenu">
-        <li><a href="/shop/">Main</a></li>
-        <li><a href="/about/">About</a></li>
-    </ul>
     <h3>{{ current_product.name }}</h3>
     <p>{{ current_product.price }}</p>
     <p>{{ current_product.description }}</p>
-
-  </body>
-</html>
+{%endblock%}

@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="/static/styles/main.css">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+Contact us, badass!
+{% endblock %}
+
+{% block content %}
 <form action="/contactus/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
-
-</body>
-</html>
+{%endblock%}

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Feedback</title>
-    <link rel="stylesheet" href="/static/styles/main.css">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+Left your feedback
+{% endblock %}
+
+{% block content %}
     <form action="/shop/feedback">
         <!--Input fields for all needed info about feedback-->
         <label for="name">Your name:</label><br>
@@ -22,5 +21,4 @@
         <!--Submit button or smth-->
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+{%endblock%}

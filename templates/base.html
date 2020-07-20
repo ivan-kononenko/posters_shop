@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div id="title"><title>{% block title %}Welcome!{% endblock %}</title></div>
+    <link rel="stylesheet" href="/static/styles/main.css">
+</head>
+<body>
+    <div id="menu">
+        {% block menu %}
+        <ul class="mainmenu">
+            <li><a href="/shop/">Main</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/shop/feedback/">Feedback</a></li>
+            <li><a href="/contactus/">Contact Us</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

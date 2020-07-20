@@ -1,20 +1,14 @@
-<html>
-  <head>
-      <meta charset="utf-8">
-      <title>Posters - {{ current_category.name }}</title>
-      <link rel="stylesheet" href="/static/styles/main.css">
-  </head>
-  <body>
-    <h1>{{ current_category.name }}</h1>
-    <p>{{ current_category.description }}</p>
-    <ul class="mainmenu">
-        <li><a href="/shop/">Main</a></li>
-        <li><a href="/about/">About</a></li>
-    </ul>
+{% extends "base.html" %}
+
+{% block title %}
+Posters - {{ current_category.name }}
+{% endblock %}
+
+{% block content %}
+<p>{{ current_category.description }}</p>
     <ul>
         {% for product in products %}
         <li><a href="/shop/{{ product.category.parent.pk }}/{{ product.category.pk }}/{{ product.pk }}/">{{ product.name }}</a></li>
         {% endfor %}
     </ul>
-  </body>
-</html>
+{%endblock%}
