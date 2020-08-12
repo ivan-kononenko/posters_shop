@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from contactus.views import contactus_view
 
 urlpatterns = [
-    path('shop/', include('shop.urls')),
+    path('shop/', include('apps.shop.urls')),
     path('admin/', admin.site.urls),
-    path('contactus/', include('contactus.urls')),
+    path('contactus/', include('apps.contactus.urls')),
+    path('', include('apps.pages.urls'))
 ]

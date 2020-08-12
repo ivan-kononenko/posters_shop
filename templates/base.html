@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <div id="title"><title>{% block title %}Welcome!{% endblock %}</title></div>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="/static/styles/main.css">
 </head>
 <body>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
     <div id="menu">
         {% block menu %}
         <ul class="mainmenu">
-            <li><a href="/shop/">Main</a></li>
+            <li><a href="/">Main</a></li>
             <li><a href="/about/">About</a></li>
-            <li><a href="/shop/feedback/">Feedback</a></li>
+            <li><a href="/feedback/">Feedback</a></li>
             <li><a href="/contactus/">Contact Us</a></li>
         </ul>
         {% endblock %}

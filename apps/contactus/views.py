@@ -4,6 +4,8 @@ from .forms import ContactRequestForm
 
 
 def contactus_view(request):
+    title = "Contact us"
+    description = "Send us a message, dear customer"
     if request.method == 'POST':
         form = ContactRequestForm(request.POST)
         if form.is_valid():
@@ -12,7 +14,7 @@ def contactus_view(request):
     else:
         form = ContactRequestForm()
 
-    return render(request, 'contactus/contactus.html', {'form': form})
+    return render(request, 'contactus/contactus.html', {'form': form, "title": title, "description": description})
 
 
 def thanks_view(request):
