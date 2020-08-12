@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 urlpatterns = [
     path('shop/', include('apps.shop.urls')),
@@ -22,3 +24,5 @@ urlpatterns = [
     path('contactus/', include('apps.contactus.urls')),
     path('', include('apps.pages.urls'))
 ]
+
+urlpatterns += staticfiles_urlpatterns()

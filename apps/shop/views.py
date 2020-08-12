@@ -6,7 +6,7 @@ from .models import CategoryL1, CategoryL2, Product
 
 def index(request):
     category_list = CategoryL1.objects.all()
-    return render(request, 'shop/index.html', {"category_list": category_list})
+    return render(request, 'index.html', {"category_list": category_list})
 
 
 def category_l1_view(request, categoryl1_id):
@@ -16,7 +16,7 @@ def category_l1_view(request, categoryl1_id):
         "current_category": current_category,
         "child_categories": child_categories
     }
-    return render(request, 'shop/category_l1.html', context)
+    return render(request, 'category_l1.html', context)
 
 
 def category_l2_view(request, categoryl1_id, categoryl2_id):
@@ -26,7 +26,7 @@ def category_l2_view(request, categoryl1_id, categoryl2_id):
         "current_category": current_category,
         "products": products
     }
-    return render(request, 'shop/category_l2.html', context)
+    return render(request, 'category_l2.html', context)
 
 
 def product_view(request, categoryl1_id, categoryl2_id, product_id):
@@ -34,6 +34,6 @@ def product_view(request, categoryl1_id, categoryl2_id, product_id):
     context = {
         "current_product": current_product,
     }
-    return render(request, 'shop/product.html', context)
+    return render(request, 'product.html', context)
 
 

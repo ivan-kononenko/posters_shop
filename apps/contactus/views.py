@@ -14,11 +14,11 @@ def contactus_view(request):
     else:
         form = ContactRequestForm()
 
-    return render(request, 'contactus/contactus.html', {'form': form, "title": title, "description": description})
+    return render(request, 'contactus.html', {'form': form, "title": title, "description": description})
 
 
 def thanks_view(request):
-    return render(request, 'contactus/thanks.html')
+    return render(request, 'thanks.html')
 
 
 
