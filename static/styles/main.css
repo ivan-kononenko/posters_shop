@@ -1,0 +1,18 @@
+.mainmenu li {
+    display: inline;
+}
+
+body {
+    background-color:#ffDEAD;
+    min-height: 75rem;
+}
+
+h1 {
+    color:#420f69;
+}
+
+p {
+    color: #420f69;
+    font-size: 14px;
+    font-family: courier;
+}
