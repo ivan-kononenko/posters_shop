@@ -1,3 +1,6 @@
-- Move menu items on the top (in bootrstrap's menu)
-- Use base.html for about page
-- Use Pricing example (https://getbootstrap.com/docs/4.5/examples/pricing/) and show first 3 products on the main page
+12.08
+- Move menu items on the top (in bootrstrap's menu) -> DONE
+- Use base.html for about page -> DONE
+- Use Pricing example (https://getbootstrap.com/docs/4.5/examples/pricing/) and show first 3 products on the main page -> DONE
+
+13.08

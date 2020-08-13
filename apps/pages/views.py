@@ -1,11 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from apps.shop.models import Product
 
 
 def main_view(request):
     title = "Main page"
     description = "From here you can proceed to the following pages:"
-    return render(request, 'main.html',  {"title": title, "description": description})
+    products = Product.objects.all().order_by("?")[:3]
+    content = {
+        "title": title,
+        "description": description,
+        "products": products,
+    }
+    return render(request, 'main.html', content)
 
 
 def feedback_view(request):
@@ -14,4 +21,6 @@ def feedback_view(request):
 
 
 def about_view(request):
-    return render(request, 'about.html')
+    title = "About"
+    return render(request, 'about.html', {"title": title})
+

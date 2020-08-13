@@ -5,5 +5,21 @@ Main page
 {% endblock %}
 
 {% block content %}
+<div class="card-deck mb-3 text-center">
+  {% for product in products %}
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+      </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">{{ product.price }}</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>{{ product.description }}</li>
+          </ul>
+          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+        </div>
+    </div>
+{% endfor %}
+</div>
 
 {% endblock %}

@@ -1,13 +1,12 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link  rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "styles/main.css" %}">
+    <link rel="stylesheet" href='{% static "bootstrap/bootstrap.min.css" %}'>
+    <link rel="stylesheet" href='{% static "styles/main.css" %}'>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -34,31 +33,28 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+            <a class="nav-link" href="/shop/">Shop</a>
+          </li>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="/about/">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="/feedback/">Feedback</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contactus/">Contact Us</a>
           </li>
         </ul>
       </div>
     </nav>
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
-    <div id="menu">
-        {% block menu %}
-        <ul class="mainmenu">
-            <li><a href="/">Main</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/feedback/">Feedback</a></li>
-            <li><a href="/contactus/">Contact Us</a></li>
-        </ul>
+    <main role="main" class="container">
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+        {% block content %}
         {% endblock %}
-    </div>
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+    </main>
 </body>
 </html>

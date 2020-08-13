@@ -18,6 +18,7 @@ def contactus_view(request):
 
 
 def thanks_view(request):
+    title = "Contact us"
     return render(request, 'thanks.html')
 
 
