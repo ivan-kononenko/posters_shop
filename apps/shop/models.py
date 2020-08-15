@@ -29,6 +29,7 @@ class Product(models.Model):
     description = models.TextField(max_length=1000)
     category = models.ForeignKey(CategoryL2, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=2)
+    image = models.ImageField(upload_to="shop", blank=True)
 
     def __repr__(self):
         return self.name

@@ -13,10 +13,11 @@ Main page
       </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">{{ product.price }}</h1>
+          <img src="{{ product.image.url }}">
           <ul class="list-unstyled mt-3 mb-4">
             <li>{{ product.description }}</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Check out</button>
         </div>
     </div>
 {% endfor %}

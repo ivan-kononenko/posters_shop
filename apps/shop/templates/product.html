@@ -5,9 +5,7 @@ Posters - {{ current_product.name }}
 {% endblock %}
 
 {% block content %}
-<h1 style="background-color:#8FC512; color:97FBFF; text-align:center; font-size: 44"> {{ current_product.name }}</h1>
-    <p style="font-family:verdana; font-size:20">{{ current_product.description }}</p>
-    <h3>{{ current_product.name }}</h3>
+    <img src="{{ current_product.image.url }}">
     <p>{{ current_product.price }}</p>
     <p>{{ current_product.description }}</p>
 {%endblock%}
