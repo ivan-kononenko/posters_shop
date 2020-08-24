@@ -5,6 +5,6 @@
     and show first 3 products on the main page
 
 13.08
-- In thanks_view: proceed variable title to template -> Done
-- Add field image to model Product and implement image uploading in DAP
-    and showing on the site. This task is big. -> Done
+- DONE - In thanks_view: proceed variable title to template
+- DONE - Add field image to model Product and implement image uploading in DAP
+    and showing on the site. This task is big.
