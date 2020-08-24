@@ -8,3 +8,15 @@
 - DONE - In thanks_view: proceed variable title to template
 - DONE - Add field image to model Product and implement image uploading in DAP
     and showing on the site. This task is big.
+
+24.08
+- Add placeholder image for products.
+- Fix image showing on product page (http://127.0.0.1:8000/shop/2/3/4/).
+- Add slugs to shop categories and products.
+    - Read about SlugField https://docs.djangoproject.com/en/3.1/ref/models/fields/.
+    - Implement autofilling of slugs.
+        - https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4.
+        - slugify(unidecode("Слава Україні!")).
+        - unique together https://stackoverflow.com/questions/2201598/how-to-define-two-fields-unique-as-couple.
+- Add breadcrumbs.
+- Add product image renaming, resizing and so on.
