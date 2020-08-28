@@ -51,6 +51,19 @@
       </div>
     </nav>
     <main role="main" class="container">
+        <div id="breadcrumbs">
+            {% if breadcrumbs %}
+                {% for url, label in breadcrumbs %}
+
+                    {% if url %}
+                        <span><a href="{{ url }}">{{ label }}</a></span> /
+                    {%else %}
+                        <span>{{ label }}</span>
+                    {% endif %}
+
+                {% endfor %}
+            {% endif %}
+        </div>
         <h1>{{ title }}</h1>
         <p>{{ description }}</p>
         {% block content %}
