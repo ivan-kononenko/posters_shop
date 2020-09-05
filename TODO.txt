@@ -20,3 +20,6 @@
         - unique together https://stackoverflow.com/questions/2201598/how-to-define-two-fields-unique-as-couple.
 - Add breadcrumbs.
 - Add product image renaming, resizing and so on.
+
+05.09
+- Refactor unique_together stuff. Should be in meta of a model.
