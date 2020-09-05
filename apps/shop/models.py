@@ -63,6 +63,10 @@ class Product(models.Model):
     class Meta:
         unique_together = ('slug', 'category')
 
+    def __init__(self, *args, **kwargs):
+        super(Product, self).__init__(*args, **kwargs)
+        self._image_old = self.image
+
     def __repr__(self):
         return self.name
 
@@ -72,8 +76,7 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(unidecode(self.name))
 
-        if self.image:
-            # import ipdb;ipdb.set_trace()
+        if self.image != self._image_old:
             image_name_new = get_random_string(8)
 
             image_name = os.path.join("shop", f"{image_name_new}.jpeg")
