@@ -6,7 +6,7 @@ Posters - {{ current_product.name }}
 
 {% block content %}
     {% if current_product.image %}
-        <img src="{{ current_product.image.url }}">
+        <img src="{{ current_product.image_small.url }}">
     {% else %}
         <img src="/media/shop/placeholder.png">
     {% endif %}

@@ -8,7 +8,16 @@ Posters - {{ current_category.name }}
 <p>{{ current_category.description }}</p>
     <ul>
         {% for product in products %}
-        <li><a href="/shop/{{ product.category.parent.slug }}/{{ product.category.slug }}/{{ product.slug }}/">{{ product.name }}</a></li>
+        <li>
+            <a href="/shop/{{ product.category.parent.slug }}/{{ product.category.slug }}/{{ product.slug }}/">
+                {% if product.image %}
+                    <img src="{{ product.image_thumb.url }}">
+                {% else %}
+                    <img src="/media/shop/placeholder_thumb.png">
+                {% endif %}
+                {{ product.name }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
 {%endblock%}
