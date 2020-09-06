@@ -73,6 +73,14 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def size(self, Imagetype):
+        image = Image.open(Image)
+        width, height = image.size
+        if height > width:
+            k = height/SIZES["big"]
+            height_new = height / k
+            width_new = width / k
+
     def save(self, *args, **kwargs):
         self.slug = slugify(unidecode(self.name))
 
