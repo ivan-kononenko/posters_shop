@@ -73,13 +73,17 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-    def size(self, Imagetype):
-        image = Image.open(Image)
-        width, height = image.size
+    def _get_new_sizes(self, old_size, image_type="thumb"):
+        width, height = old_size
         if height > width:
-            k = height/SIZES["big"]
-            height_new = height / k
-            width_new = width / k
+            k = height / SIZES[image_type]
+            new_height = SIZES[image_type]
+            new_width = width / k
+        else:
+            k = width / SIZES[image_type]
+            new_width = SIZES[image_type]
+            new_height = height / k
+        return int(new_width), int(new_height)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(unidecode(self.name))
@@ -90,21 +94,30 @@ class Product(models.Model):
             image_name = os.path.join("shop", f"{image_name_new}.jpeg")
             image_path = os.path.join(settings.MEDIA_ROOT, image_name)
             img = Image.open(self.image)
-            img = img.resize((SIZES["big"], SIZES["big"]), Image.ANTIALIAS)
+            img = img.convert('RGB')
+            new_size = self._get_new_sizes(
+                (self.image.width, self.image.height,), "big")
+            img = img.resize(new_size, Image.ANTIALIAS)
             img.save(image_path, format="JPEG", quality=70, optimize=True)
             self.image.name = image_name
 
             image_name = os.path.join("shop", f"{image_name_new}_small.jpeg")
             image_path = os.path.join(settings.MEDIA_ROOT, image_name)
             img = Image.open(self.image)
-            img = img.resize((SIZES["small"], SIZES["small"]), Image.ANTIALIAS)
+            img = img.convert('RGB')
+            new_size = self._get_new_sizes(
+                (self.image.width, self.image.height,), "small")
+            img = img.resize(new_size, Image.ANTIALIAS)
             img.save(image_path, format="JPEG", quality=70, optimize=True)
             self.image_small.name = image_name
 
             image_name = os.path.join("shop", f"{image_name_new}_thumb.jpeg")
             image_path = os.path.join(settings.MEDIA_ROOT, image_name)
             img = Image.open(self.image)
-            img = img.resize((SIZES["thumb"], SIZES["thumb"]), Image.ANTIALIAS)
+            img = img.convert('RGB')
+            new_size = self._get_new_sizes(
+                (self.image.width, self.image.height,), "thumb")
+            img = img.resize(new_size, Image.ANTIALIAS)
             img.save(image_path, format="JPEG", quality=70, optimize=True)
             self.image_thumb.name = image_name
 
