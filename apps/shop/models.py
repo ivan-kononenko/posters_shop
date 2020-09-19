@@ -85,12 +85,16 @@ class Product(models.Model):
             new_height = height / k
         return int(new_width), int(new_height)
 
+    def _resize_image(self, image, image_type="thumb"):
+        pass
+
     def save(self, *args, **kwargs):
         self.slug = slugify(unidecode(self.name))
 
         if self.image != self._image_old:
             image_name_new = get_random_string(8)
 
+            # self._resize_image(self.image, image_type)
             image_name = os.path.join("shop", f"{image_name_new}.jpeg")
             image_path = os.path.join(settings.MEDIA_ROOT, image_name)
             img = Image.open(self.image)

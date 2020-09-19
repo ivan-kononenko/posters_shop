@@ -18,8 +18,13 @@
         - https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4.
         - slugify(unidecode("Слава Україні!")).
         - unique together https://stackoverflow.com/questions/2201598/how-to-define-two-fields-unique-as-couple.
-- Add breadcrumbs.
-- Add product image renaming, resizing and so on.
+- DONE - Add breadcrumbs.
+- DONE - Add product image renaming, resizing and so on.
 
 05.09
-- Refactor unique_together stuff. Should be in meta of a model.
+- DONE Refactor unique_together stuff. Should be in meta of a model.
+
+19.09
+- Refactor Product.save(). Move image resizing into function.
+- Delete product images on image change or product deletion.
+- Add customers.
