@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+Posters - {{ customer.first_name }} {{ customer.last_name }}
+{% endblock %}
+
+{% block content %}
+    <p>{{ customer.user.username }}</p>
+    <p>{{ customer.first_name }}</p>
+    <p>{{ customer.last_name }}</p>
+
+{%endblock%}

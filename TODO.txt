@@ -28,3 +28,7 @@
 - Refactor Product.save(). Move image resizing into function.
 - Delete product images on image change or product deletion.
 - Add customers.
+    - Read https://docs.djangoproject.com/en/3.1/topics/auth/default/.
+    - In list of customers page (http://127.0.0.1:8000/admin/profile/customer/)
+      make nice list (first_name + last_name, email, phone).
+    - Try to implement basic login/logout functionality and profile page.
