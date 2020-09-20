@@ -85,44 +85,36 @@ class Product(models.Model):
             new_height = height / k
         return int(new_width), int(new_height)
 
-    def _resize_image(self, image, image_type="thumb"):
-        pass
+    def _resize_save_image(self, image_name_new, image_type="thumb"):
+        image_name_new = os.path.join(f"{image_name_new}_{image_type}.jpeg")
+        image_path = os.path.join(settings.MEDIA_ROOT, "shop", image_name_new)
+        img = Image.open(self.image)
+        img = img.convert('RGB')
+        new_size = self._get_new_sizes(
+            (self.image.width, self.image.height,), image_type)
+        img = img.resize(new_size, Image.ANTIALIAS)
+        img.save(image_path, format="JPEG", quality=70, optimize=True)
+
+    def _delete_old_images(self):
+        image_name, image_type = os.path.basename(self._image_old.name).split(".")
+        image_path = os.path.join(settings.MEDIA_ROOT, "shop", f"{image_name}_big.{image_type}")
+        os.unlink(image_path)
+        image_path = os.path.join(settings.MEDIA_ROOT, "shop", f"{image_name}_small.{image_type}")
+        os.unlink(image_path)
+        image_path = os.path.join(settings.MEDIA_ROOT, "shop", f"{image_name}_thumb.{image_type}")
+        os.unlink(image_path)
+        self._image_old.delete()
 
     def save(self, *args, **kwargs):
         self.slug = slugify(unidecode(self.name))
-
-        if self.image != self._image_old:
+        if self.image and self.image != self._image_old:
             image_name_new = get_random_string(8)
-
-            # self._resize_image(self.image, image_type)
-            image_name = os.path.join("shop", f"{image_name_new}.jpeg")
-            image_path = os.path.join(settings.MEDIA_ROOT, image_name)
-            img = Image.open(self.image)
-            img = img.convert('RGB')
-            new_size = self._get_new_sizes(
-                (self.image.width, self.image.height,), "big")
-            img = img.resize(new_size, Image.ANTIALIAS)
-            img.save(image_path, format="JPEG", quality=70, optimize=True)
-            self.image.name = image_name
-
-            image_name = os.path.join("shop", f"{image_name_new}_small.jpeg")
-            image_path = os.path.join(settings.MEDIA_ROOT, image_name)
-            img = Image.open(self.image)
-            img = img.convert('RGB')
-            new_size = self._get_new_sizes(
-                (self.image.width, self.image.height,), "small")
-            img = img.resize(new_size, Image.ANTIALIAS)
-            img.save(image_path, format="JPEG", quality=70, optimize=True)
-            self.image_small.name = image_name
-
-            image_name = os.path.join("shop", f"{image_name_new}_thumb.jpeg")
-            image_path = os.path.join(settings.MEDIA_ROOT, image_name)
-            img = Image.open(self.image)
-            img = img.convert('RGB')
-            new_size = self._get_new_sizes(
-                (self.image.width, self.image.height,), "thumb")
-            img = img.resize(new_size, Image.ANTIALIAS)
-            img.save(image_path, format="JPEG", quality=70, optimize=True)
-            self.image_thumb.name = image_name
+            self._resize_save_image(image_name_new, "big")
+            self._resize_save_image(image_name_new, "small")
+            self._resize_save_image(image_name_new, "thumb")
+            # self.image.name = os.path.join(f"{image_name_new}.jpeg")
+            if self._image_old:
+                print(self._image_old.name)
+                # self._delete_old_images()
 
         super(Product, self).save(*args, **kwargs)
