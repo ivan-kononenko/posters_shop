@@ -9,7 +9,7 @@ Django==3.0.7
 idna==2.9
 multidict==4.7.6
 pbr==5.4.4
-Pillow==7.2.0
+Pillow==8.1.1
 python-dotenv==0.13.0
 pytz==2020.1
 six==1.13.0
